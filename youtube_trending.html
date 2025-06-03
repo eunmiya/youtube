@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>🎬 유튜브 인기급상승 영상 메일 발송기</title>
+  <style>
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f4f6fb; margin: 0; }
+    .container { max-width: 600px; margin: 40px auto; background: #fff; border-radius: 16px; box-shadow: 0 4px 24px rgba(0,0,0,0.08); padding: 32px 24px; }
+    .header { text-align: center; background: linear-gradient(90deg, #6366f1 0%, #8b5cf6 100%); color: #fff; padding: 32px 0 16px 0; border-radius: 16px 16px 0 0; }
+    .desc { font-size: 15px; margin: 18px 0 10px 0; color: #333; }
+    .email-row { display: flex; gap: 8px; margin-bottom: 16px; }
+    .email-input { flex: 1; font-size: 16px; padding: 8px 12px; border-radius: 8px; border: 1.5px solid #bdbdbd; background: #f9f9fb; }
+    .send-btn { font-size: 16px; padding: 8px 24px; border-radius: 8px; background: #6366f1; color: white; font-weight: bold; border: none; cursor: pointer; }
+    .send-btn:hover { background: #7c3aed; }
+    .status { font-size: 14px; color: #6366f1; margin-top: 10px; text-align: center; }
+    .footer { text-align: center; color: #64748b; font-size: 12px; margin-top: 32px; }
+    table { width: 100%; border-collapse: collapse; background: #f9f9fb; border-radius: 12px; overflow: hidden; margin-top: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.04);}
+    th, td { border: 1px solid #e5e7eb; padding: 12px 10px; text-align: center; font-size: 15px; }
+    th { background: linear-gradient(90deg, #6366f1 0%, #8b5cf6 100%); color: #fff; font-weight: 600; }
+    .thumb-img { width: 120px; border-radius: 8px; }
+    .video-title-link { color: #4f46e5; font-weight: 600; text-decoration: none; }
+    .video-title-link:hover { color: #7c3aed; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1 style="font-size:26px;">🎬 유튜브 인기급상승 영상 메일 발송기</h1>
+    </div>
+    <div class="desc">
+      이 프로그램은 유튜브 인기급상승 영상을 예쁜 표로 정리하여 입력한 이메일 주소로 보내줍니다.<br>
+      <ul>
+        <li>아래에 이메일 주소를 입력하고 <b>[보내기]</b> 버튼을 누르세요.</li>
+        <li>잠시 기다리면 입력한 이메일로 인기 영상 정보가 도착합니다.</li>
+        <li>이메일이 오지 않으면 스팸함도 확인해 주세요.</li>
+      </ul>
+      <span style="color:#64748b;">* Gmail 등 일부 메일은 수신이 지연될 수 있습니다.</span>
+    </div>
+    <div class="email-row">
+      <input type="email" class="email-input" id="email" placeholder="이메일 주소를 입력하세요" required>
+      <button class="send-btn" onclick="sendMail()">보내기</button>
+    </div>
+    <div class="status" id="status"></div>
+    <!-- 결과 표는 JS로 동적으로 생성하거나, 서버에서 받아서 삽입 -->
+    <div id="result-table"></div>
+    <div class="footer">
+      <p>이 웹페이지는 자동으로 생성되었습니다.</p>
+    </div>
+  </div>
+  <script>
+    function sendMail() {
+      const email = document.getElementById('email').value;
+      if (!email) {
+        document.getElementById('status').innerText = '이메일 주소를 입력하세요.';
+        return;
+      }
+      document.getElementById('status').innerText = '메일을 보내는 중입니다...';
+      // 실제로는 아래 fetch 부분을 백엔드 API로 연결해야 합니다.
+      // 예시:
+      // fetch('/api/send_trending', { method: 'POST', body: JSON.stringify({email}), headers: {'Content-Type':'application/json'}})
+      //   .then(res => res.json()).then(data => { ... });
+      setTimeout(() => {
+        document.getElementById('status').innerText = '메일이 성공적으로 전송되었습니다! (실제 동작은 서버 구현 필요)';
+      }, 1500);
+    }
+  </script>
+</body>
+</html> 
